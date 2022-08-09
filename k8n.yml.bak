@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: servicea-pod
+spec:
+   containers:
+   - name: servicea-container01
+     image: gangarkreddi/servicea:latest
+     ports:
+     - containerPort: 7667

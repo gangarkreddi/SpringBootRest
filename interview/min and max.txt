@@ -1,0 +1,62 @@
+The Stream interface provides two methods max() and min() that return the largest and the smallest item from the underlying stream.
+
+int max = Arrays.stream(items)
+  .max()
+  .getAsInt(); // 100
+
+int min = Arrays.stream(items)
+  .min()
+  .getAsInt(); // 0
+  
+
+
+-----------------------------------------------
+
+Integer min = Collections.min(Arrays.asList(ArrayUtils.toObject(items)));
+Integer max = Collections.max(Arrays.asList(ArrayUtils.toObject(items)));
+
+
+----------------------------
+Arrays.sort(items);
+
+max = items[items.length - 1];  
+min = items[0];	
+-----------------------------
+
+max = items[0];
+min = items[0];
+
+for (int i = 1; i < items.length; i++) {
+  if (items[i] > max) {
+    max = items[i];
+  }
+  else if (items[i] < min) {
+    min = items[i];
+  }
+}
+
+System.out.println(max);	//100
+System.out.println(min);	//0
+
+
+
+
+
+
+---------------------
+
+recursive
+
+
+min = getMax(items, 0, items[0]);	//0
+min = getMin(items, 0, items[0]);	//100
+
+public static int getMax(final int[] numbers, final int a, final int n) {
+return a >= numbers.length ? n
+  : Math.max(n, getMax(numbers, a + 1, numbers[a] > n ? numbers[a] : n));
+}
+
+private static int getMin(final int[] numbers, final int a, final int n) {
+return a == numbers.length ? n
+  : Math.min(n, getMin(numbers, a + 1, numbers[a] < n ? numbers[a] : n));
+}

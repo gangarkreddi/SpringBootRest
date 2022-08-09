@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: serviceA-pod
+spec:
+   containers:
+   - name: serviceA-container01
+     image: raghava/httpd:latest
+     ports:
+     - containerPort: 76677
